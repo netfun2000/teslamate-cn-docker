@@ -1,6 +1,6 @@
 services:
   teslamate:
-    image: docker.1ms.run/gococonut/teslamate:latest
+    image: docker.xuanyuan.me/gococonut/teslamate:latest
     restart: always
     environment:
       - ENCRYPTION_KEY=${TM_ENCRYPTION_KEY}
@@ -19,7 +19,7 @@ services:
       - all
 
   database:
-    image: docker.1ms.run/postgres:17
+    image: docker.xuanyuan.me/postgres:17
     restart: always
     environment:
       - POSTGRES_USER=${TM_DB_USER}
@@ -29,7 +29,7 @@ services:
       - teslamate-db:/var/lib/postgresql/data
 
   grafana:
-    image: docker.1ms.run/gococonut/grafana:latest
+    image: docker.xuanyuan.me/gococonut/grafana:latest
     restart: always
     environment:
       - DATABASE_USER=${TM_DB_USER}
@@ -42,7 +42,7 @@ services:
       - teslamate-grafana-data:/var/lib/grafana
 
   mosquitto:
-    image: docker.1ms.run/eclipse-mosquitto:2
+    image: docker.xuanyuan.me/eclipse-mosquitto:2
     restart: always
     command: mosquitto -c /mosquitto-no-auth.conf
     volumes:
